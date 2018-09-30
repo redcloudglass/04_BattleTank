@@ -33,4 +33,24 @@ void ATankAIController::BeginPlay()
 
 }
 
+// Called every frame
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (GetPlayerTank())
+	{
+		// TODO Move towards the players
+
+		// Aim towards the player
+		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+
+		// Fire if ready
+	}
+
+
+	//AimTowardsCrosshair();
+	//UE_LOG(LogTemp, Warning, TEXT("ATankPlayerController ticking."));
+
+}
 

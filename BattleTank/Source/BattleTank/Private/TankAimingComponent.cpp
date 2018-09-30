@@ -45,11 +45,21 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
 
 	// Calculate the OutLaunchVelocity
-	UGameplayStatics::SuggestProjectileVelocity(this, OutLaunchVelocity, StartLocation, HitLocation, ESuggestProjVelocityTraceOption::TraceFullPath);
-
-
-	auto AimDirection = OutLaunchVelocity.GetSafeNormal();
-
-	UE_LOG(LogTemp, Warning, TEXT("Aiming at %s"), *AimDirection.ToString());
+	if ( UGameplayStatics::SuggestProjectileVelocity(
+		this, 
+		OutLaunchVelocity, 
+		StartLocation, 
+		HitLocation, 
+		LaunchSpeed,
+		false,
+		0,
+		0,
+		ESuggestProjVelocityTraceOption::DoNotTrace) )
+	{
+		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
+		auto TankName = GetOwner()->GetName();
+		UE_LOG(LogTemp, Warning, TEXT("%s Aiming at %s"), *TankName, *AimDirection.ToString());
+	}
+	
 }
 

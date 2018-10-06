@@ -3,6 +3,7 @@
 #include "TankAIController.h"
 #include "Engine/World.h"
 #include "GameFramework/Actor.h"
+#include "TankPawn.h"
 
 ATankPawn* ATankAIController::GetControlledTank() const
 {

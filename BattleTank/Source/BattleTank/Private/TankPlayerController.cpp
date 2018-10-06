@@ -2,6 +2,7 @@
 
 #include "TankPlayerController.h"
 #include "Engine/World.h"
+#include "TankPawn.h"
 
 void ATankPlayerController::BeginPlay()
 {

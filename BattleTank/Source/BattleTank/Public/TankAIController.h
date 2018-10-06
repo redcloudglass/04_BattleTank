@@ -4,12 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "TankPawn.h"
 #include "TankAIController.generated.h"
 
 /**
  * 
  */
+
+class ATankPawn;
+
 UCLASS()
 class BATTLETANK_API ATankAIController : public AAIController
 {

@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankPawn.h"
+#include "GameFramework/Actor.h"
 #include "TankAimingComponent.h"
 
 
@@ -19,9 +20,16 @@ void ATankPawn::AimAt(FVector HitLocation)
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
+void ATankPawn::Fire()
+{
+	auto Time = GetWorld()->GetTimeSeconds();
+	UE_LOG(LogTemp, Warning, TEXT("%f: Tank fired."), Time);
+}
+
 void ATankPawn::SetBarrelReference(UTankBarrel * BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
+	//Barrel = BarrelToSet;
 }
 
 void ATankPawn::SetTurretReference(UTankTurret * TurretToSet)
